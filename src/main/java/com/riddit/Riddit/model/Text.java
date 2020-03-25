@@ -1,9 +1,6 @@
 package com.riddit.Riddit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name="text")
@@ -14,9 +11,11 @@ public class Text {
     private String id;
     private String title;
     private String body;
-    private User user;
     private Date date;
     private int votes;
+    @ManyToOne
+    @JoinColumn
+    private User user;
     // TODO: Add: VoteList: Map<User, Boolean> and CommentList: OneToMany List<Comment>
 
     public Text() {

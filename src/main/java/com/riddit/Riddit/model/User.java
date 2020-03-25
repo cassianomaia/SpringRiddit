@@ -1,7 +1,10 @@
 package com.riddit.Riddit.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity(name="user_account")
 public class User {
@@ -9,7 +12,9 @@ public class User {
     @Id
     private String email;
     private String password;
-    // TODO: Add TextList: OneToMany List<Text> and CommentList: OneToMany List<Comment>
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Text> textList;
+    // TODO: Add CommentList: OneToMany List<Comment>
 
     public User() {
 

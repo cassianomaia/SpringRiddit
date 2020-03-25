@@ -17,13 +17,13 @@ public class TextController {
                        votes (Ascending or Descending)
                        comment number (Descending) */
     @RequestMapping("/texts")
-    public List<Text> getAllTopics() {
+    public List<Text> getAllTexts() {
         return textService.getAllTexts();
     }
 
     // TODO: Add option to fetch comments
     @RequestMapping("/texts/{id}")
-    public Text getTopic(@PathVariable String id) {
+    public Text getText(@PathVariable String id) {
         return textService.getText(id);
     }
 
