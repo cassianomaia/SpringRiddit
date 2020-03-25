@@ -8,7 +8,7 @@ public class Text {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String title;
     private String body;
     private Date date;
@@ -22,8 +22,7 @@ public class Text {
 
     }
 
-    public Text(String id, String title, String body, User user, Date date, int votes) {
-        this.id = id;
+    public Text(String title, String body, User user, Date date, int votes) {
         this.title = title;
         this.body = body;
         this.user = user;
@@ -31,11 +30,11 @@ public class Text {
         this.votes = votes;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
