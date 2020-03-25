@@ -9,6 +9,7 @@ public class User {
     @Id
     private String email;
     private String password;
+    // TODO: Add TextList: OneToMany List<Text> and CommentList: OneToMany List<Comment>
 
     public User() {
 
