@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
+
     @RequestMapping({ "/user" })
     public String firstPage() {
         return "Hello World";
