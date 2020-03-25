@@ -17,6 +17,7 @@ public class Text {
     private User user;
     private Date date;
     private int votes;
+    // TODO: Add: VoteList: Map<User, Boolean> and CommentList: OneToMany List<Comment>
 
     public Text() {
 
