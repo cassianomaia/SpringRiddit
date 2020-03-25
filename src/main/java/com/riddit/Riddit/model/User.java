@@ -3,7 +3,7 @@ package com.riddit.Riddit.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="User")
+@Entity(name="user_account")
 public class User {
 
     @Id
