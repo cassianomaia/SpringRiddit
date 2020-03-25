@@ -23,7 +23,7 @@ public class TextController {
 
     // TODO: Add option to fetch comments
     @RequestMapping("/texts/{id}")
-    public Text getText(@PathVariable String id) {
+    public Text getText(@PathVariable Long id) {
         return textService.getText(id);
     }
 
@@ -33,7 +33,7 @@ public class TextController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/texts/{id}")
-    public void deleteText(@PathVariable String id) {
+    public void deleteText(@PathVariable Long id) {
         textService.deleteText(id);
     }
 
