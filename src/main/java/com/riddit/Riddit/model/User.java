@@ -14,7 +14,8 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Text> textList;
-    // TODO: Add CommentList: OneToMany List<Comment>
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private Set<Comment> commentList;
 
     public User() {
 
@@ -41,11 +42,19 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Set<Text> getTextList() {
+        return textList;
+    }
+
+    public void setTextList(Set<Text> textList) {
+        this.textList = textList;
+    }
+
+    public Set<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(Set<Comment> commentList) {
+        this.commentList = commentList;
     }
 }

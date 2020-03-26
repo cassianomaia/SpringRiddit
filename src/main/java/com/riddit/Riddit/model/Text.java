@@ -2,6 +2,7 @@ package com.riddit.Riddit.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity(name="text")
 public class Text {
@@ -16,7 +17,9 @@ public class Text {
     @ManyToOne
     @JoinColumn
     private User user;
-    // TODO: Add: VoteList: Map<User, Boolean> and CommentList: OneToMany List<Comment>
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private Set<Comment> commentList;
+    // TODO: Add: VoteList: Map<User, Boolean>
 
     public Text() {
 
@@ -78,15 +81,12 @@ public class Text {
         this.votes = votes;
     }
 
-    @Override
-    public String toString() {
-        return "Text{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                ", user=" + user +
-                ", date=" + date +
-                ", votes=" + votes +
-                '}';
+    public Set<Comment> getCommentList() {
+        return commentList;
     }
+
+    public void setCommentList(Set<Comment> commentList) {
+        this.commentList = commentList;
+    }
+
 }
