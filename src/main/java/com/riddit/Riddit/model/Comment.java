@@ -12,10 +12,8 @@ public class Comment {
     private String body;
     private Date date;
     @ManyToOne
-    @JoinColumn
     private User user;
     @ManyToOne
-    @JoinColumn
     private Text text;
 
     public Comment() {

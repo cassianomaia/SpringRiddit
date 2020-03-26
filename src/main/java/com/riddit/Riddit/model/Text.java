@@ -15,9 +15,8 @@ public class Text {
     private Date date;
     private int votes;
     @ManyToOne
-    @JoinColumn
     private User user;
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="text", cascade = CascadeType.ALL)
     private Set<Comment> commentList;
     // TODO: Add: VoteList: Map<User, Boolean>
 
