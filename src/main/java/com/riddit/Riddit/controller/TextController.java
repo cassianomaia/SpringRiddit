@@ -27,12 +27,12 @@ public class TextController {
         return textService.getText(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/texts")
+    @RequestMapping(method = RequestMethod.POST, value = "/text")
     public void addText(@RequestBody Text text) {
         textService.addText(text);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/texts/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/text/{id}")
     public void deleteText(@PathVariable Long id) {
         textService.deleteText(id);
     }
