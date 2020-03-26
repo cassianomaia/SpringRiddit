@@ -1,5 +1,7 @@
 package com.riddit.Riddit.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ public class User {
     @Id
     private String email;
     private String password;
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Text> textList;
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)

@@ -1,6 +1,7 @@
 package com.riddit.Riddit.controller;
 
 import com.riddit.Riddit.model.Text;
+import com.riddit.Riddit.model.User;
 import com.riddit.Riddit.service.TextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,8 @@ public class TextController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/text")
-    public void addText(@RequestBody Text text) {
+    public void addText(@RequestBody Text text, @RequestParam String userId) {
+        text.setUser(new User(userId, ""));
         textService.addText(text);
     }
 
