@@ -25,18 +25,18 @@ public class Text {
 
     }
 
-    public Text(String title, String body, User user, Date date, int votes) {
+    public Text(String title, String body, User user, Date date) {
         this.title = title;
         this.body = body;
         this.user = user;
         this.date = date;
-        this.votes = votes;
+        this.votes = 0;
     }
 
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
