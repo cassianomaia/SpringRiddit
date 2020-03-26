@@ -16,13 +16,13 @@ public class TextController {
     /* TODO: order by: post date (Descending)
                        votes (Ascending or Descending)
                        comment number (Descending) */
-    @RequestMapping("/texts")
+    @RequestMapping("/text")
     public List<Text> getAllTexts() {
         return textService.getAllTexts();
     }
 
     // TODO: Add option to fetch comments
-    @RequestMapping("/texts/{id}")
+    @RequestMapping("/text/{id}")
     public Text getText(@PathVariable Long id) {
         return textService.getText(id);
     }
