@@ -1,6 +1,8 @@
 package com.riddit.Riddit.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,12 +11,12 @@ import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity(name="user_account")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
 public class User {
 
     @Id
     private String email;
     private String password;
-    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Text> textList;
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
