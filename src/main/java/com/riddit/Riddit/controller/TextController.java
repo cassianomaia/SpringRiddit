@@ -1,8 +1,8 @@
 package com.riddit.Riddit.controller;
 
 import com.riddit.Riddit.model.Text;
-import com.riddit.Riddit.model.User;
 import com.riddit.Riddit.service.TextService;
+import com.riddit.Riddit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +13,9 @@ public class TextController {
 
     @Autowired
     private TextService textService;
+
+    @Autowired
+    private UserService userService;
 
     /* TODO: order by: post date (Descending)
                        votes (Ascending or Descending)
@@ -30,7 +33,7 @@ public class TextController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/text")
     public void addText(@RequestBody Text text, @RequestParam String userId) {
-        text.setUser(new User(userId, ""));
+        text.setUser(userService.getUser(userId));
         textService.addText(text);
     }
 

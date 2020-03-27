@@ -1,12 +1,16 @@
 package com.riddit.Riddit.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity(name="text")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Text {
 
     @Id
@@ -16,7 +20,6 @@ public class Text {
     private String body;
     private Date date;
     private int votes;
-    @JsonBackReference
     @ManyToOne
     private User user;
     @OneToMany(mappedBy="text", cascade = CascadeType.ALL)
