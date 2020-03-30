@@ -17,6 +17,9 @@ import java.util.List;
 
 @Component
 public class JwtTokenProvider {
+    /*
+    code based on: https://github.com/hantsy/springboot-jwt-sample
+     */
 
     @Value("${security.jwt.token.secret-key:secret}")
     private String secretKey = "secret";
