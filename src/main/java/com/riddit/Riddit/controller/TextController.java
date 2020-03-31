@@ -42,5 +42,8 @@ public class TextController {
         textService.deleteText(id);
     }
 
-    // TODO: Add method to vote
+    @RequestMapping(method = RequestMethod.POST, value = "/text/{id}/vote")
+    public void voteText(@PathVariable Long id,@RequestParam String userId, @RequestParam Boolean vote) {
+        textService.updateTextVotes(id, userId, vote);
+    }
 }
