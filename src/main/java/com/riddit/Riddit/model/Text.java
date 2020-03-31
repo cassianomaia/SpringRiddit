@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Map;
 import java.util.Set;
 
 @Entity(name="text")
@@ -24,7 +25,7 @@ public class Text {
     private User user;
     @OneToMany(mappedBy="text", cascade = CascadeType.ALL)
     private Set<Comment> commentList;
-    // TODO: Add: VoteList: Map<User, Boolean>
+    private Map<User, Boolean> voteList;
 
     public Text() {
 
@@ -82,8 +83,14 @@ public class Text {
         return votes;
     }
 
-    public void setVotes(int votes) {
-        this.votes = votes;
+    public void setVotes() {
+        voteList.forEach((u, v) -> {
+            if(v){
+                votes++;
+            } else {
+                votes--;
+            }
+        });
     }
 
     public Set<Comment> getCommentList() {
@@ -94,4 +101,11 @@ public class Text {
         this.commentList = commentList;
     }
 
+    public Map<User, Boolean> getVoteList() {
+        return voteList;
+    }
+
+    public void setVoteList(Map<User, Boolean> voteList) {
+        this.voteList = voteList;
+    }
 }
