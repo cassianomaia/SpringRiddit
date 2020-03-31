@@ -47,7 +47,11 @@ public class TextService {
         User user = userRepository. findById(userId).orElse(null);
         if(text != null && user != null) {
             Map<String, Boolean> updatedVoteList = text.getVoteList();
-            updatedVoteList.put(user.getEmail(), vote);
+            if(updatedVoteList.containsKey(userId) && updatedVoteList.get(userId) == vote) {
+                updatedVoteList.remove(userId);
+            } else {
+                updatedVoteList.put(userId, vote);
+            }
             text.setVoteList(updatedVoteList);
             text.setVotes();
             textRepository.save(text);
