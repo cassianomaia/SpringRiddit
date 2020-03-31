@@ -25,7 +25,9 @@ public class Text {
     private User user;
     @OneToMany(mappedBy="text", cascade = CascadeType.ALL)
     private Set<Comment> commentList;
-    private Map<User, Boolean> voteList;
+    @ManyToMany
+    @MapKeyColumn(name = "email")
+    private Map<Boolean, User> voteList;
 
     public Text() {
 
@@ -84,7 +86,7 @@ public class Text {
     }
 
     public void setVotes() {
-        voteList.forEach((u, v) -> {
+        voteList.forEach((v, u) -> {
             if(v){
                 votes++;
             } else {
@@ -101,11 +103,11 @@ public class Text {
         this.commentList = commentList;
     }
 
-    public Map<User, Boolean> getVoteList() {
+    public Map<Boolean, User> getVoteList() {
         return voteList;
     }
 
-    public void setVoteList(Map<User, Boolean> voteList) {
+    public void setVoteList(Map<Boolean, User> voteList) {
         this.voteList = voteList;
     }
 }
